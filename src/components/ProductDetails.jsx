@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
-function ProductDetails({ products }) {
+function ProductDetails({ products, addToCart }) {
   const { id } = useParams();
   const product = products.find((product) => product.id === Number(id));
 
@@ -18,6 +19,7 @@ function ProductDetails({ products }) {
               <p>${product.price}</p>
               <button
                 type="button"
+                onClick={() => addToCart(product)}
                 className="py-2 px-4 rounded-sm border border-neutral-800 text-neutral-800"
               >
                 Add to Cart
@@ -29,5 +31,17 @@ function ProductDetails({ products }) {
     </section>
   );
 }
+
+ProductDetails.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default ProductDetails;
