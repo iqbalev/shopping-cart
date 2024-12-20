@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function ProductCard({ products }) {
+function ProductCard({ products, addToCart }) {
   return products.map((product) => (
     <article
       key={product.id}
@@ -15,6 +15,7 @@ function ProductCard({ products }) {
         <p className="text-lg">${product.price}</p>
         <button
           type="button"
+          onClick={() => addToCart(product)}
           className="py-2 px-4 rounded-sm border border-neutral-800 text-neutral-800"
         >
           Add to Cart
@@ -33,6 +34,7 @@ ProductCard.propTypes = {
       title: PropTypes.string.isRequired,
     })
   ).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductCard;
