@@ -35,19 +35,34 @@ function App() {
   }
 
   function decreaseQuantity(product) {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [product]: prevQuantities[product] - 1,
-    }));
-    console.log("Quantity decreased");
+    setQuantities((prevQuantities) => {
+      const decreasedQuantities = {
+        ...prevQuantities,
+        [product]: prevQuantities[product] - 1,
+      };
+      console.log(`Quantity decreased to ${decreasedQuantities[product]}.`);
+
+      if (decreasedQuantities[product] === 0) {
+        removeFromCart(product);
+      }
+      return decreasedQuantities;
+    });
   }
 
   function increaseQuantity(product) {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [product]: prevQuantities[product] + 1,
-    }));
-    console.log("Quantity increased.");
+    setQuantities((prevQuantities) => {
+      const increasedQuantities = {
+        ...prevQuantities,
+        [product]: prevQuantities[product] + 1,
+      };
+      console.log(`Quantity increased to ${increasedQuantities[product]}.`);
+      return increasedQuantities;
+    });
+  }
+
+  function removeFromCart(product) {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== product));
+    console.log("Product removed from cart.");
   }
 
   return (
@@ -61,6 +76,7 @@ function App() {
             cart,
             quantities,
             addToCart,
+            removeFromCart,
             decreaseQuantity,
             increaseQuantity,
           }}
