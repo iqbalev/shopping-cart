@@ -28,9 +28,9 @@ function App() {
         ...prevQuantities,
         [product.id]: 1,
       }));
-      console.log("Product added to cart.");
+      console.log(`Product ${product.id} added to cart.`);
     } else {
-      console.log("Product is already in cart.");
+      console.log(`Product ${product.id} already in cart.`);
     }
   }
 
@@ -40,7 +40,9 @@ function App() {
         ...prevQuantities,
         [product]: prevQuantities[product] - 1,
       };
-      console.log(`Quantity decreased to ${decreasedQuantities[product]}.`);
+      console.log(
+        `Product ${product} quantity decreased to ${decreasedQuantities[product]}.`
+      );
 
       if (decreasedQuantities[product] === 0) {
         removeFromCart(product);
@@ -55,19 +57,21 @@ function App() {
         ...prevQuantities,
         [product]: prevQuantities[product] + 1,
       };
-      console.log(`Quantity increased to ${increasedQuantities[product]}.`);
+      console.log(
+        `Product ${product} quantity increased to ${increasedQuantities[product]}.`
+      );
       return increasedQuantities;
     });
   }
 
   function removeFromCart(product) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== product));
-    console.log("Product removed from cart.");
+    console.log(`Product ${product} removed from cart.`);
   }
 
   return (
     <>
-      <Header />
+      <Header quantities={quantities} />
       <main>
         <Outlet
           context={{
