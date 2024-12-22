@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import InfoMessage from "../components/InfoMessage";
 
 function ErrorPage() {
   return (
-    <div className="flex justify-center items-center h-screen p-8">
-      <h2 className="text-2xl">
-        Page not found. Click <Link to="/">here</Link> to return home.
-      </h2>
-    </div>
+    <section className="flex flex-col gap-2 justify-center items-center h-screen p-4">
+      <InfoMessage
+        message={"Oops... You are on the wrong page."}
+        link={"/"}
+        linkText={"Return Home"}
+      />
+    </section>
   );
 }
 
