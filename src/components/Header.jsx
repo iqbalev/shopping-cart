@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function Header() {
   return (
@@ -9,16 +10,7 @@ function Header() {
       >
         <Link to="/">Shopping App</Link>
       </h1>
-      <nav>
-        <ul className="flex gap-6">
-          <li>
-            <Link to="shop">Shop</Link>
-          </li>
-          <li>
-            <Link to="cart">Cart</Link>
-          </li>
-        </ul>
-      </nav>
+      <NavBar />
     </header>
   );
 }
