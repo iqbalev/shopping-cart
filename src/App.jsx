@@ -8,6 +8,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState({});
+  const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
     async function getProducts() {
@@ -28,9 +29,9 @@ function App() {
         ...prevQuantities,
         [product.id]: 1,
       }));
-      console.log(`Product ${product.id} added to cart.`);
+      showToastMessage(`Added to cart.`);
     } else {
-      console.log(`Product ${product.id} already in cart.`);
+      showToastMessage(`Already in cart.`);
     }
   }
 
@@ -40,10 +41,6 @@ function App() {
         ...prevQuantities,
         [product]: prevQuantities[product] - 1,
       };
-      console.log(
-        `Product ${product} quantity decreased to ${decreasedQuantities[product]}.`
-      );
-
       if (decreasedQuantities[product] === 0) {
         removeFromCart(product);
       }
@@ -57,16 +54,26 @@ function App() {
         ...prevQuantities,
         [product]: prevQuantities[product] + 1,
       };
-      console.log(
-        `Product ${product} quantity increased to ${increasedQuantities[product]}.`
-      );
       return increasedQuantities;
     });
   }
 
   function removeFromCart(product) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== product));
-    console.log(`Product ${product} removed from cart.`);
+    showToastMessage(`Removed from cart.`);
+  }
+
+  useEffect(() => {
+    if (toastMessage) {
+      const toastMessageTimer = setTimeout(() => {
+        setToastMessage("");
+      }, 2000);
+      return () => clearTimeout(toastMessageTimer);
+    }
+  }, [toastMessage]);
+
+  function showToastMessage(message) {
+    setToastMessage(message);
   }
 
   return (
@@ -83,6 +90,7 @@ function App() {
             removeFromCart,
             decreaseQuantity,
             increaseQuantity,
+            toastMessage,
           }}
         />
       </main>
