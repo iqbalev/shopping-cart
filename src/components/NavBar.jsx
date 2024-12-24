@@ -2,19 +2,29 @@ import PropTypes from "prop-types";
 import HamburgerMenuButton from "./HamburgerMenuButton";
 import NavLinks from "./NavLinks";
 
-function NavBar({ cartItemCount, isMenuOpen, toggleMenu }) {
+function NavBar({
+  cartItemCount,
+  isDropdownMenuOpen,
+  toggleDropdownMenu,
+  closeDropdownMenu,
+}) {
   return (
     <nav className="relative">
-      <HamburgerMenuButton toggleMenu={toggleMenu} />
-      <NavLinks isMenuOpen={isMenuOpen} cartItemCount={cartItemCount} />
+      <HamburgerMenuButton toggleDropdownMenu={toggleDropdownMenu} />
+      <NavLinks
+        isDropdownMenuOpen={isDropdownMenuOpen}
+        cartItemCount={cartItemCount}
+        closeDropdownMenu={closeDropdownMenu}
+      />
     </nav>
   );
 }
 
 NavBar.propTypes = {
   cartItemCount: PropTypes.number.isRequired,
-  isMenuOpen: PropTypes.bool.isRequired,
-  toggleMenu: PropTypes.func.isRequired,
+  isDropdownMenuOpen: PropTypes.bool.isRequired,
+  toggleDropdownMenu: PropTypes.func.isRequired,
+  closeDropdownMenu: PropTypes.func.isRequired,
 };
 
 export default NavBar;

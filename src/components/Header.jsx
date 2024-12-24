@@ -4,15 +4,19 @@ import NavBar from "./NavBar";
 import PropTypes from "prop-types";
 
 function Header({ quantities }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
   const cartItemCount = Object.values(quantities).reduce(
     (sum, itemQuantity) => sum + itemQuantity,
     0
   );
 
-  function toggleMenu() {
-    setIsMenuOpen(!isMenuOpen);
+  function toggleDropdownMenu() {
+    setIsDropdownMenuOpen(!isDropdownMenuOpen);
+  }
+
+  function closeDropdownMenu() {
+    setIsDropdownMenuOpen(false);
   }
 
   return (
@@ -25,8 +29,9 @@ function Header({ quantities }) {
       </h1>
       <NavBar
         cartItemCount={cartItemCount}
-        isMenuOpen={isMenuOpen}
-        toggleMenu={toggleMenu}
+        isDropdownMenuOpen={isDropdownMenuOpen}
+        toggleDropdownMenu={toggleDropdownMenu}
+        closeDropdownMenu={closeDropdownMenu}
       />
     </header>
   );
