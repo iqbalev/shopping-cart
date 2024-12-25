@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function NavLinks({ isDropdownOpen, cartItemCount, closeDropdown }) {
+function NavLinks({
+  isDropdownOpen,
+  dropdownRef,
+  cartItemCount,
+  closeDropdown,
+}) {
   return (
     <ul
+      ref={dropdownRef}
       className={`sm:flex ${
         !isDropdownOpen
           ? "hidden gap-6"
@@ -26,6 +32,7 @@ function NavLinks({ isDropdownOpen, cartItemCount, closeDropdown }) {
 
 NavLinks.propTypes = {
   isDropdownOpen: PropTypes.bool.isRequired,
+  dropdownRef: PropTypes.object.isRequired,
   cartItemCount: PropTypes.number.isRequired,
   closeDropdown: PropTypes.func.isRequired,
 };
