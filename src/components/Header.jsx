@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
 import PropTypes from "prop-types";
+import NavBar from "./NavBar";
 
 function Header({ quantities }) {
-  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const cartItemCount = Object.values(quantities).reduce(
     (sum, itemQuantity) => sum + itemQuantity,
     0
   );
 
-  function toggleDropdownMenu() {
-    setIsDropdownMenuOpen(!isDropdownMenuOpen);
+  function toggleDropdown() {
+    setIsDropdownOpen(!isDropdownOpen);
   }
 
-  function closeDropdownMenu() {
-    setIsDropdownMenuOpen(false);
+  function closeDropdown() {
+    setIsDropdownOpen(false);
   }
 
   return (
@@ -28,10 +28,10 @@ function Header({ quantities }) {
         <Link to="/">Shopping App</Link>
       </h1>
       <NavBar
+        isDropdownOpen={isDropdownOpen}
         cartItemCount={cartItemCount}
-        isDropdownMenuOpen={isDropdownMenuOpen}
-        toggleDropdownMenu={toggleDropdownMenu}
-        closeDropdownMenu={closeDropdownMenu}
+        toggleDropdown={toggleDropdown}
+        closeDropdown={closeDropdown}
       />
     </header>
   );
