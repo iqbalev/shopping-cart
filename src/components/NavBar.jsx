@@ -9,7 +9,7 @@ function NavBar({
   closeDropdown,
 }) {
   return (
-    <nav className="relative">
+    <nav>
       <HamburgerMenuButton toggleDropdown={toggleDropdown} />
       <NavLinks
         isDropdownOpen={isDropdownOpen}
