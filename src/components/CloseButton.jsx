@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-function CloseButton({ closeDropdown }) {
+function CloseButton({ closeMobileNavMenu }) {
   return (
-    <button type="button" onClick={closeDropdown} className="sm:hidden">
+    <button type="button" onClick={closeMobileNavMenu} className="sm:hidden">
       X
     </button>
   );
@@ -11,5 +11,5 @@ function CloseButton({ closeDropdown }) {
 export default CloseButton;
 
 CloseButton.propTypes = {
-  closeDropdown: PropTypes.func.isRequired,
+  closeMobileNavMenu: PropTypes.func.isRequired,
 };

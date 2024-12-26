@@ -4,19 +4,19 @@ import PropTypes from "prop-types";
 import NavBar from "./NavBar";
 
 function Header({ quantities }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileNavMenuOpen, setIsMobileNavMenuOpen] = useState(false);
 
   const cartItemCount = Object.values(quantities).reduce(
     (sum, itemQuantity) => sum + itemQuantity,
     0
   );
 
-  function toggleDropdown() {
-    setIsDropdownOpen(!isDropdownOpen);
+  function toggleMobileNavMenu() {
+    setIsMobileNavMenuOpen(!isMobileNavMenuOpen);
   }
 
-  function closeDropdown() {
-    setIsDropdownOpen(false);
+  function closeMobileNavMenu() {
+    setIsMobileNavMenuOpen(false);
   }
 
   return (
@@ -28,10 +28,10 @@ function Header({ quantities }) {
         <Link to="/">Shopping App</Link>
       </h1>
       <NavBar
-        isDropdownOpen={isDropdownOpen}
+        isMobileNavMenuOpen={isMobileNavMenuOpen}
         cartItemCount={cartItemCount}
-        toggleDropdown={toggleDropdown}
-        closeDropdown={closeDropdown}
+        toggleMobileNavMenu={toggleMobileNavMenu}
+        closeMobileNavMenu={closeMobileNavMenu}
       />
     </header>
   );
