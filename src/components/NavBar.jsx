@@ -4,7 +4,6 @@ import NavLinks from "./NavLinks";
 
 function NavBar({
   isDropdownOpen,
-  dropdownRef,
   cartItemCount,
   toggleDropdown,
   closeDropdown,
@@ -14,7 +13,6 @@ function NavBar({
       <HamburgerMenuButton toggleDropdown={toggleDropdown} />
       <NavLinks
         isDropdownOpen={isDropdownOpen}
-        dropdownRef={dropdownRef}
         cartItemCount={cartItemCount}
         closeDropdown={closeDropdown}
       />
@@ -24,7 +22,6 @@ function NavBar({
 
 NavBar.propTypes = {
   isDropdownOpen: PropTypes.bool.isRequired,
-  dropdownRef: PropTypes.object.isRequired,
   cartItemCount: PropTypes.number.isRequired,
   toggleDropdown: PropTypes.func.isRequired,
   closeDropdown: PropTypes.func.isRequired,
