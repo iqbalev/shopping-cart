@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import CloseButton from "./CloseButton";
 
@@ -16,14 +16,14 @@ function NavMenu({ isMobileNavMenuOpen, cartItemCount, closeMobileNavMenu }) {
       </div>
       <div className="flex flex-col sm:flex-row sm:gap-6">
         <li>
-          <Link to="shop" onClick={closeMobileNavMenu}>
+          <NavLink to="shop" onClick={closeMobileNavMenu}>
             Shop
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="cart" onClick={closeMobileNavMenu}>
+          <NavLink to="cart" onClick={closeMobileNavMenu}>
             {cartItemCount !== 0 ? `Cart (${cartItemCount})` : "Cart"}
-          </Link>
+          </NavLink>
         </li>
       </div>
     </ul>
