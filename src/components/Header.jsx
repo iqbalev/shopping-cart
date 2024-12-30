@@ -20,11 +20,8 @@ function Header({ quantities }) {
   }
 
   return (
-    <header className="flex p-4 justify-between gap-4 items-center sm:justify-around">
-      <h1
-        role="button"
-        className="text-2xl font-bold uppercase tracking-widest button"
-      >
+    <header className="flex p-4 sm:p-1 justify-between gap-4 items-center sm:justify-around">
+      <h1 className="text-2xl font-bold uppercase tracking-widest">
         <Link to="/">Shopping App</Link>
       </h1>
       <NavBar

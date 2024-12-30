@@ -9,7 +9,7 @@ function NavBar({
   closeMobileNavMenu,
 }) {
   return (
-    <nav>
+    <nav className="flex items-center justify-center">
       <HamburgerButton toggleMobileNavMenu={toggleMobileNavMenu} />
       <NavMenu
         isMobileNavMenuOpen={isMobileNavMenuOpen}
