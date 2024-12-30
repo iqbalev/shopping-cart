@@ -8,12 +8,19 @@ function CartPage() {
   const { cart, quantities, decreaseQuantity, increaseQuantity, toastMessage } =
     useOutletContext();
 
-  const totalPrice = cart
+  const cartTotalPrice = cart
     .reduce((sum, item) => {
       const productQuantity = quantities[item.id];
       return sum + productQuantity * item.price;
     }, 0)
     .toFixed(2);
+
+  function calculateProductTotalPrice(product) {
+    const productTotalPrice = (product.price * quantities[product.id]).toFixed(
+      2
+    );
+    return productTotalPrice;
+  }
 
   return cart.length === 0 ? (
     <section className="flex flex-col gap-2 justify-center items-center h-screen p-4">
@@ -34,11 +41,12 @@ function CartPage() {
             quantities={quantities}
             decreaseQuantity={decreaseQuantity}
             increaseQuantity={increaseQuantity}
+            productPrice={calculateProductTotalPrice(product)}
           />
         ))}
       </section>
       <section className="flex flex-col p-2 gap-2 sm:py-0">
-        <Checkout totalPrice={totalPrice} />
+        <Checkout cartTotalPrice={cartTotalPrice} />
       </section>
     </div>
   );

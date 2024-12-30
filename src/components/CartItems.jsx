@@ -6,6 +6,7 @@ function CartItems({
   quantities,
   decreaseQuantity,
   increaseQuantity,
+  productPrice,
 }) {
   return (
     <article className="grid grid-cols-4 place-items-center">
@@ -13,7 +14,7 @@ function CartItems({
       <p className="text-center">
         <Link to={`/shop/product/${product.id}`}>{product.title}</Link>
       </p>
-      <p>${product.price}</p>
+      <p>${productPrice}</p>
       <div className="flex justify-center items-center gap-2">
         <button type="button" onClick={() => decreaseQuantity(product.id)}>
           -
@@ -32,6 +33,7 @@ CartItems.propTypes = {
   quantities: PropTypes.object.isRequired,
   decreaseQuantity: PropTypes.func.isRequired,
   increaseQuantity: PropTypes.func.isRequired,
+  productPrice: PropTypes.string.isRequired,
 };
 
 export default CartItems;

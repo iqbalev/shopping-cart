@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Checkout({ totalPrice }) {
+function Checkout({ cartTotalPrice }) {
   return (
     <>
       <div className="flex justify-between">
         <p className="font-bold">Total</p>
-        <p className="font-bold">${totalPrice}</p>
+        <p className="font-bold">${cartTotalPrice}</p>
       </div>
       <Link
         to=""
@@ -19,7 +19,7 @@ function Checkout({ totalPrice }) {
 }
 
 Checkout.propTypes = {
-  totalPrice: PropTypes.string.isRequired,
+  cartTotalPrice: PropTypes.string.isRequired,
 };
 
 export default Checkout;
