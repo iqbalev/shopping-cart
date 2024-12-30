@@ -17,6 +17,19 @@ function NavMenu({ isMobileNavMenuOpen, cartItemCount, closeMobileNavMenu }) {
       <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-stretch gap-2 sm:gap-8">
         <li>
           <NavLink
+            to="/"
+            onClick={closeMobileNavMenu}
+            className={({ isActive }) =>
+              `hover:text-neutral-700 uppercase tracking-wider ${
+                isActive ? "underline underline-offset-4" : ""
+              }`
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="shop"
             onClick={closeMobileNavMenu}
             className={({ isActive }) =>
