@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import RatingIcon from "../assets/RatingIcon.svg";
 
 function ProductCard({ products, addToCart }) {
   return products.map((product) => (
@@ -22,6 +23,16 @@ function ProductCard({ products, addToCart }) {
         >
           <Link to={`product/${product.id}`}>{product.title}</Link>
         </p>
+        <div className="flex justify-center items-center gap-1">
+          <img
+            className="w-4 inline-block"
+            src={RatingIcon}
+            alt="rating-icon"
+          />
+          <p className="text-sm">{product.rating.rate}</p>
+          <span className="text-sm">|</span>
+          <p className="text-sm">{product.rating.count} sold</p>
+        </div>
       </div>
       <button
         type="button"
