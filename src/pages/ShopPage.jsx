@@ -44,7 +44,7 @@ function ShopPage() {
           <Loader />
         </div>
       ) : (
-        <section className="grid w-3/4 gap-10 grid-cols-1 sm:grid-cols-2 p-4 relative">
+        <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 relative">
           {toastMessage && <ToastMessage message={toastMessage} />}
           <ProductCard products={products} addToCart={addToCart} />
           <ScrollToTopButton

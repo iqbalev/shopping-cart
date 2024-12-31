@@ -5,22 +5,31 @@ function ProductCard({ products, addToCart }) {
   return products.map((product) => (
     <article
       key={product.id}
-      className="flex flex-col justify-between items-center gap-2 p-4 "
+      className="flex flex-col justify-between gap-2 p-4 shadow-sm"
     >
-      <p className="text-center">
-        <Link to={`product/${product.id}`}>{product.title}</Link>
-      </p>
-      <img src={product.image} alt="product-img" className="w-3/5 m-8" />
-      <div className="flex flex-col gap-2 justify-center sm:flex-row items-center">
-        <p className="text-lg">${product.price}</p>
-        <button
-          type="button"
-          onClick={() => addToCart(product)}
-          className="py-2 px-4 rounded-sm border border-neutral-800 text-neutral-800"
-        >
-          Add to Cart
-        </button>
+      <div className="flex flex-col items-center justify-center w-48 h-full p-4 mx-auto">
+        <img
+          src={product.image}
+          alt="product-img"
+          className="w-full h-auto block"
+        />
       </div>
+      <div className="flex flex-col items-start p-4 gap-1">
+        <p className="font-semibold">${product.price}</p>
+        <p
+          title={product.title}
+          className="w-full overflow-hidden text-ellipsis whitespace-nowrap"
+        >
+          <Link to={`product/${product.id}`}>{product.title}</Link>
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={() => addToCart(product)}
+        className="p-3 rounded-md bg-indigo-500 text-white"
+      >
+        Add to Cart
+      </button>
     </article>
   ));
 }
