@@ -31,7 +31,8 @@ function App() {
       }));
       showToastMessage(`Added to cart.`);
     } else {
-      showToastMessage(`Already in cart.`);
+      increaseQuantity(product.id);
+      showToastMessage(`Added to cart.`);
     }
   }
 
