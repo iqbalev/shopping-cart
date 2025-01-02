@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import CloseButtonIcon from "../assets/CloseButtonIcon.svg";
 
-function CloseButton({ closeMobileNavMenu }) {
+function CloseButton({ onClick, className }) {
   return (
-    <button type="button" onClick={closeMobileNavMenu} className="sm:hidden">
+    <button type="button" onClick={onClick} className={className}>
       <img src={CloseButtonIcon} alt="close-button-icon" />
     </button>
   );
@@ -12,5 +12,6 @@ function CloseButton({ closeMobileNavMenu }) {
 export default CloseButton;
 
 CloseButton.propTypes = {
-  closeMobileNavMenu: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };

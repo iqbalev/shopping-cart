@@ -12,7 +12,7 @@ function NavMenu({ isMobileNavMenuOpen, cartItemCount, closeMobileNavMenu }) {
       }
     >
       <div className="flex flex-row-reverse">
-        <CloseButton closeMobileNavMenu={closeMobileNavMenu} />
+        <CloseButton onClick={closeMobileNavMenu} className="sm:hidden" />
       </div>
       <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-stretch gap-2 sm:gap-8">
         <li>
