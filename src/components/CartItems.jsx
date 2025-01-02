@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import DecreaseQuantityButton from "./DecreaseQuantityButton";
+import IncreaseQuantityButton from "./IncreaseQuantityButton";
 
 function CartItems({
   product,
@@ -16,13 +18,9 @@ function CartItems({
       </p>
       <p>${productPrice}</p>
       <div className="flex justify-center items-center gap-2">
-        <button type="button" onClick={() => decreaseQuantity(product.id)}>
-          -
-        </button>
+        <DecreaseQuantityButton onClick={() => decreaseQuantity(product.id)} />
         <p>{quantities[product.id]}</p>
-        <button type="button" onClick={() => increaseQuantity(product.id)}>
-          +
-        </button>
+        <IncreaseQuantityButton onClick={() => increaseQuantity(product.id)} />
       </div>
     </article>
   );
