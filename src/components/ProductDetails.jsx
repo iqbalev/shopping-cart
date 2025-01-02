@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import AddToCartButton from "./AddToCartButton";
 
 function ProductDetails({ products, addToCart }) {
   const { id } = useParams();
@@ -16,13 +17,10 @@ function ProductDetails({ products, addToCart }) {
           <p>{product.description}</p>
           <div className="flex items-center gap-2">
             <p>${product.price}</p>
-            <button
-              type="button"
+            <AddToCartButton
               onClick={() => addToCart(product)}
-              className="py-2 px-4 rounded-sm border border-neutral-800 text-neutral-800"
-            >
-              Add to Cart
-            </button>
+              className="p-3 rounded-md bg-indigo-500 text-white"
+            />
           </div>
         </div>
       </>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import AddToCartButton from "./AddToCartButton";
 import RatingIcon from "../assets/RatingIcon.svg";
 
 function ProductCard({ products, addToCart }) {
@@ -34,13 +35,10 @@ function ProductCard({ products, addToCart }) {
           <p className="text-sm">{product.rating.count} sold</p>
         </div>
       </div>
-      <button
-        type="button"
+      <AddToCartButton
         onClick={() => addToCart(product)}
         className="p-3 rounded-md bg-indigo-500 text-white"
-      >
-        Add to Cart
-      </button>
+      />
     </article>
   ));
 }
