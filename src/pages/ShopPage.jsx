@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import Loader from "../components/Loader";
+import AddedToCartModal from "../components/AddedToCartModal";
 import ToastMessage from "../components/ToastMessage";
 import ProductCard from "../components/ProductCard";
 import ScrollToTopButton from "../components/ScrollToTopButton";
@@ -8,7 +9,16 @@ import ScrollToTopButton from "../components/ScrollToTopButton";
 const SCROLL_THRESHOLD_PERCENTAGE = 0.7;
 
 function ShopPage() {
-  const { products, isLoading, addToCart, toastMessage } = useOutletContext();
+  const {
+    products,
+    isLoading,
+    isModalVisible,
+    addToCart,
+    modalContent,
+    closeModal,
+    toastMessage,
+  } = useOutletContext();
+
   const [isScrollToTopButtonVisible, setIsScrollToTopButtonVisible] =
     useState(false);
 
@@ -45,6 +55,15 @@ function ShopPage() {
         </div>
       ) : (
         <section className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 relative">
+          {isModalVisible && (
+            <div className="w-screen h-screen bg-neutral-800 bg-opacity-80 fixed top-0 left-0 flex justify-center items-center">
+              <AddedToCartModal
+                isModalVisible={isModalVisible}
+                modalContent={modalContent}
+                closeModal={closeModal}
+              />
+            </div>
+          )}
           {toastMessage && <ToastMessage message={toastMessage} />}
           <ProductCard products={products} addToCart={addToCart} />
           <ScrollToTopButton

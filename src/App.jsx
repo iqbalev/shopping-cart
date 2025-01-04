@@ -8,6 +8,8 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState({});
   const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
@@ -20,6 +22,28 @@ function App() {
     getProducts();
   }, []);
 
+  useEffect(() => {
+    if (toastMessage) {
+      const toastMessageTimer = setTimeout(() => {
+        setToastMessage("");
+      }, 2000);
+      return () => clearTimeout(toastMessageTimer);
+    }
+  }, [toastMessage]);
+
+  function showModal(image, title, price) {
+    setModalContent({ image, title, price });
+    setIsModalVisible(true);
+  }
+
+  function closeModal() {
+    setIsModalVisible(false);
+  }
+
+  function showToastMessage(message) {
+    setToastMessage(message);
+  }
+
   function addToCart(product) {
     const isProductInCart = cart.some((item) => item.id === product.id);
 
@@ -29,11 +53,16 @@ function App() {
         ...prevQuantities,
         [product.id]: 1,
       }));
-      showToastMessage(`Added to cart.`);
+      showModal(product.image, product.title, product.price);
     } else {
       increaseQuantity(product.id);
-      showToastMessage(`Added to cart.`);
+      showModal(product.image, product.title, product.price);
     }
+  }
+
+  function removeFromCart(product) {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== product));
+    showToastMessage(`Removed from cart.`);
   }
 
   function decreaseQuantity(product) {
@@ -59,24 +88,6 @@ function App() {
     });
   }
 
-  function removeFromCart(product) {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== product));
-    showToastMessage(`Removed from cart.`);
-  }
-
-  useEffect(() => {
-    if (toastMessage) {
-      const toastMessageTimer = setTimeout(() => {
-        setToastMessage("");
-      }, 2000);
-      return () => clearTimeout(toastMessageTimer);
-    }
-  }, [toastMessage]);
-
-  function showToastMessage(message) {
-    setToastMessage(message);
-  }
-
   return (
     <>
       <Header quantities={quantities} />
@@ -84,6 +95,7 @@ function App() {
         <Outlet
           context={{
             isLoading,
+            isModalVisible,
             products,
             cart,
             quantities,
@@ -91,6 +103,8 @@ function App() {
             removeFromCart,
             decreaseQuantity,
             increaseQuantity,
+            modalContent,
+            closeModal,
             toastMessage,
           }}
         />
