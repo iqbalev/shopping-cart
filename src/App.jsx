@@ -60,34 +60,34 @@ function App() {
     }
   }
 
-  function removeFromCart(product) {
+  function removeFromCart(productId) {
     setQuantities((prevQuantities) => {
       const removedQuantities = { ...prevQuantities };
-      delete removedQuantities[product];
+      delete removedQuantities[productId];
       return removedQuantities;
     });
-    setCart((prevCart) => prevCart.filter((item) => item.id !== product));
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
     showToastMessage(`Removed from cart.`);
   }
 
-  function decreaseQuantity(product) {
+  function decreaseQuantity(productId) {
     setQuantities((prevQuantities) => {
       const decreasedQuantities = {
         ...prevQuantities,
-        [product]: prevQuantities[product] - 1,
+        [productId]: prevQuantities[productId] - 1,
       };
-      if (decreasedQuantities[product] === 0) {
-        removeFromCart(product);
+      if (decreasedQuantities[productId] === 0) {
+        removeFromCart(productId);
       }
       return decreasedQuantities;
     });
   }
 
-  function increaseQuantity(product) {
+  function increaseQuantity(productId) {
     setQuantities((prevQuantities) => {
       const increasedQuantities = {
         ...prevQuantities,
-        [product]: prevQuantities[product] + 1,
+        [productId]: prevQuantities[productId] + 1,
       };
       return increasedQuantities;
     });
