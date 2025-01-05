@@ -61,6 +61,11 @@ function App() {
   }
 
   function removeFromCart(product) {
+    setQuantities((prevQuantities) => {
+      const removedQuantities = { ...prevQuantities };
+      delete removedQuantities[product];
+      return removedQuantities;
+    });
     setCart((prevCart) => prevCart.filter((item) => item.id !== product));
     showToastMessage(`Removed from cart.`);
   }
