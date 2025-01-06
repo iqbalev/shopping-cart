@@ -10,12 +10,12 @@ function NavBar({
 }) {
   return (
     <nav className="flex items-center justify-center">
-      <HamburgerButton toggleMobileNavMenu={toggleMobileNavMenu} />
       <NavMenu
         isMobileNavMenuOpen={isMobileNavMenuOpen}
         cartItemCount={cartItemCount}
         closeMobileNavMenu={closeMobileNavMenu}
       />
+      <HamburgerButton toggleMobileNavMenu={toggleMobileNavMenu} />
     </nav>
   );
 }

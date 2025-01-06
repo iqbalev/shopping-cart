@@ -4,7 +4,7 @@ import CloseButton from "./CloseButton";
 
 function NavMenu({ isMobileNavMenuOpen, cartItemCount, closeMobileNavMenu }) {
   return (
-    <ul
+    <div
       className={
         !isMobileNavMenuOpen
           ? "hidden sm:block sm:p-4"
@@ -14,7 +14,7 @@ function NavMenu({ isMobileNavMenuOpen, cartItemCount, closeMobileNavMenu }) {
       <div className="flex flex-row-reverse">
         <CloseButton onClick={closeMobileNavMenu} className="sm:hidden" />
       </div>
-      <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-stretch gap-2 sm:gap-8">
+      <ul className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-stretch gap-2 sm:gap-8">
         <li>
           <NavLink
             to="/"
@@ -54,8 +54,8 @@ function NavMenu({ isMobileNavMenuOpen, cartItemCount, closeMobileNavMenu }) {
             {cartItemCount !== 0 ? `Cart (${cartItemCount})` : "Cart"}
           </NavLink>
         </li>
-      </div>
-    </ul>
+      </ul>
+    </div>
   );
 }
 
