@@ -5,10 +5,7 @@ function InfoMessage({ message, link, linkText }) {
   return (
     <>
       <h2 className="text-center text-lg">{message}</h2>
-      <Link
-        to={link}
-        className="py-2 px-4 bg-neutral-800 rounded-sm text-white"
-      >
+      <Link to={link} className="py-2 px-4 bg-indigo-500 rounded-md text-white">
         {linkText}
       </Link>
     </>
