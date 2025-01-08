@@ -6,11 +6,25 @@ import Header from "./components/Header";
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [quantities, setQuantities] = useState({});
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  const [quantities, setQuantities] = useState(() => {
+    const savedQuantities = localStorage.getItem("quantities");
+    return savedQuantities ? JSON.parse(savedQuantities) : {};
+  });
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [toastMessage, setToastMessage] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem("quantities", JSON.stringify(quantities));
+  }, [quantities]);
 
   useEffect(() => {
     async function getProducts() {
