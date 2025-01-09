@@ -7,13 +7,13 @@ function ProductCard({ products, addToCart }) {
   return products.map((product) => (
     <article
       key={product.id}
-      className="flex flex-col justify-between gap-2 p-4 shadow-sm"
+      className="flex flex-col justify-between gap-2 p-4"
     >
-      <div className="flex flex-col items-center justify-center w-48 h-full p-4 mx-auto">
+      <div className="flex flex-col items-center justify-center w-56 h-56 p-4 mx-auto">
         <img
           src={product.image}
           alt="product-img"
-          className="w-full h-auto block"
+          className="w-full h-full object-contain block"
         />
       </div>
       <div className="flex flex-col items-start p-4 gap-1">
