@@ -17,7 +17,13 @@ function ProductCard({ products, addToCart }) {
         />
       </div>
       <div className="flex flex-col items-start p-4 gap-1">
-        <p className="font-semibold">${product.price}</p>
+        <div className="flex gap-2 items-center">
+          <p className="font-semibold">${product.price}</p>
+          <AddToCartButton
+            onClick={() => addToCart(product)}
+            className="px-1 rounded-sm bg-indigo-500 text-sm text-white"
+          />
+        </div>
         <p
           title={product.title}
           className="w-full overflow-hidden text-ellipsis whitespace-nowrap"
@@ -35,10 +41,6 @@ function ProductCard({ products, addToCart }) {
           <p className="text-sm">{product.rating.count} sold</p>
         </div>
       </div>
-      <AddToCartButton
-        onClick={() => addToCart(product)}
-        className="p-3 rounded-md bg-indigo-500 text-white"
-      />
     </article>
   ));
 }
